@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:islam/nav_bar_selected.dart';
 import 'package:islam/nav_bar_unselected.dart';
 import 'package:islam/tabs/hadethtabs.dart';
-import 'package:islam/tabs/qurantabs.dart';
+import 'package:islam/quran/qurantabs.dart';
 import 'package:islam/tabs/radiotabs.dart';
 import 'package:islam/tabs/sebhatabs.dart';
 import 'package:islam/tabs/timetabs.dart';
@@ -49,7 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
               fit: BoxFit.fitWidth,
               height: MediaQuery.sizeOf(context).height * 0.15,
             ),
-            tabs[currentIndex],
+            Expanded(child: tabs[currentIndex]),
           ],
         ),
       ),

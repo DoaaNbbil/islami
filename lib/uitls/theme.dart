@@ -11,5 +11,27 @@ class AppTheme {
       type: BottomNavigationBarType.fixed,
       selectedItemColor: AppColor.whiteColor,
     ),
+    textTheme: TextTheme(
+      headlineSmall: TextStyle(
+        color: AppColor.whiteColor,
+        fontSize: 24,
+        fontWeight: FontWeight.bold,
+      ),
+      titleSmall: TextStyle(
+        color: AppColor.whiteColor,
+        fontSize: 14,
+        fontWeight: FontWeight.bold,
+      ),
+      titleMedium: TextStyle(
+        color: AppColor.whiteColor,
+        fontSize: 16,
+        fontWeight: FontWeight.bold,
+      ),
+      titleLarge: TextStyle(
+        color: AppColor.whiteColor,
+        fontSize: 20,
+        fontWeight: FontWeight.bold,
+      ),
+    ),
   );
 }
