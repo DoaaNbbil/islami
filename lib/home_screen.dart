@@ -8,8 +8,6 @@ import 'package:islam/tabs/sebhatabs.dart';
 import 'package:islam/tabs/timetabs.dart';
 
 class HomeScreen extends StatefulWidget {
-  static const String routeName = '/home';
-
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }

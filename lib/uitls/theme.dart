@@ -4,6 +4,17 @@ import 'package:islam/uitls/color.dart';
 class AppTheme {
   static ThemeData LightTheme = ThemeData();
   static ThemeData darkTheme = ThemeData(
+    scaffoldBackgroundColor: AppColor.blackColor,
+    appBarTheme: AppBarTheme(
+      backgroundColor: AppColor.blackColor,
+      foregroundColor: AppColor.primaryColor,
+      centerTitle: true,
+      titleTextStyle: TextStyle(
+        fontSize: 20,
+        fontWeight: FontWeight.bold,
+        color: AppColor.primaryColor,
+      ),
+    ),
     primaryColor: AppColor.primaryColor,
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       backgroundColor: AppColor.primaryColor,
