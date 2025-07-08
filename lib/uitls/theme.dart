@@ -23,6 +23,11 @@ class AppTheme {
       selectedItemColor: AppColor.whiteColor,
     ),
     textTheme: TextTheme(
+      displaySmall: TextStyle(
+        color: AppColor.whiteColor,
+        fontSize: 36,
+        fontWeight: FontWeight.bold,
+      ),
       headlineSmall: TextStyle(
         color: AppColor.whiteColor,
         fontSize: 24,
