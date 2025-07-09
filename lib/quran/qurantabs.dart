@@ -1,29 +1,56 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:islam/quran/sura.dart';
 import 'package:islam/quran/sura_item.dart';
 import 'package:islam/quran/sura_service.dart';
 import 'package:islam/uitls/color.dart';
 import 'package:islam/uitls/routeNames.dart';
 
-class QuranTabs extends StatelessWidget {
+class QuranTabs extends StatefulWidget {
+  @override
+  State<QuranTabs> createState() => _QuranTabsState();
+}
+
+class _QuranTabsState extends State<QuranTabs> {
   @override
   Widget build(BuildContext context) {
     double mediaQueryWidth = MediaQuery.sizeOf(context).width;
+    TextTheme textTheme = Theme.of(context).textTheme;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-          child: Text(
-            'Sura List',
-            style: Theme.of(context).textTheme.titleMedium,
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: TextField(
+            style: textTheme.titleMedium,
+            decoration: InputDecoration(
+              hintText: 'Sura Name',
+              prefixIcon: SvgPicture.asset(
+                'assets/icons/quran.svg',
+                colorFilter: ColorFilter.mode(
+                  AppColor.primaryColor,
+                  BlendMode.srcIn,
+                ),
+                width: 28,
+                height: 28,
+                fit: BoxFit.scaleDown,
+              ),
+            ),
+            onChanged: (String qiery) {
+              QuranService.suraSearch(qiery);
+              setState(() {});
+            },
           ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+          child: Text('Sura List', style: textTheme.titleMedium),
         ),
         Expanded(
           child: ListView.separated(
             padding: EdgeInsets.symmetric(horizontal: 20),
             itemBuilder: (_, index) {
-              Sura sura = QuranService.suras[index];
+              Sura sura = QuranService.surasSearchResult[index];
               return InkWell(
                 onTap: () {
                   Navigator.of(
@@ -33,7 +60,7 @@ class QuranTabs extends StatelessWidget {
                 child: SuraItem(sura),
               );
             },
-            itemCount: QuranService.suras.length,
+            itemCount: QuranService.surasSearchResult.length,
             separatorBuilder: (_, index) => Divider(
               thickness: 1,
               color: AppColor.whiteColor,
