@@ -22,6 +22,23 @@ class AppTheme {
       type: BottomNavigationBarType.fixed,
       selectedItemColor: AppColor.whiteColor,
     ),
+    inputDecorationTheme: InputDecorationTheme(
+      filled: true,
+      fillColor: AppColor.blackColor.withValues(alpha: 0.7),
+      hintStyle: TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.bold,
+        color: AppColor.whiteColor.withValues(alpha: 0.6),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: AppColor.primaryColor, width: 1),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: AppColor.primaryColor, width: 1),
+        borderRadius: BorderRadius.circular(10),
+      ),
+    ),
     textTheme: TextTheme(
       displaySmall: TextStyle(
         color: AppColor.whiteColor,
