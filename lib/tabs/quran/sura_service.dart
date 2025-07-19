@@ -368,7 +368,10 @@ class QuranService {
     surasSearchResult.clear();
     for (int i = 0; i < 114; i++) {
       if (arabicNamesSuras[i].contains(query) ||
-          englishNamesSura[i].toLowerCase().contains(query.toLowerCase())) {
+          englishNamesSura[i]
+              .replaceAll('-', '')
+              .toLowerCase()
+              .contains(query.toLowerCase())) {
         Sura sura = getSuraFromeIndex(i);
         surasSearchResult.add(sura);
       }
