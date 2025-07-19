@@ -45,8 +45,8 @@ dev_dependencies:
 flutter_launcher_icons:
   android: true
   ios: true
-  image_path: "assets/images/launcherIcon.png"
-  background_color: "#000000" # ← خلفية سوداء
+  image_path: "assets/images/splash.png"
+  
 
 
 
