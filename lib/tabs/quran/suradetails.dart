@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:islam/quran/sura.dart';
-import 'package:islam/quran/sura_service.dart';
+import 'package:islam/tabs/quran/sura.dart';
+import 'package:islam/tabs/quran/sura_service.dart';
 import 'package:islam/uitls/color.dart';
 import 'package:islam/widget/loadingindicator.dart';
 

@@ -1,7 +1,7 @@
 import 'dart:ffi';
 
 import 'package:flutter/services.dart';
-import 'package:islam/quran/sura.dart';
+import 'package:islam/tabs/quran/sura.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class QuranService {

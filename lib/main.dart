@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:islam/home_screen.dart';
 import 'package:islam/intro/OnboardingScreen.dart';
-import 'package:islam/quran/sura_service.dart';
-import 'package:islam/quran/suradetails.dart';
+import 'package:islam/tabs/hadeth/hadeth_details.dart';
+import 'package:islam/tabs/quran/sura_service.dart';
+import 'package:islam/tabs/quran/suradetails.dart';
 import 'package:islam/uitls/routeNames.dart';
 import 'package:islam/uitls/theme.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -32,6 +33,7 @@ class IslamiApp extends StatelessWidget {
         AppRoute.home: (_) => HomeScreen(),
         AppRoute.suraDetails: (_) => Suradetails(),
         AppRoute.onboarding: (_) => OnboardingScreen(),
+        AppRoute.hadethDetails: (_) => hadethdetails(),
       },
     );
   }

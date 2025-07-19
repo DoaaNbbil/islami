@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:islam/nav_bar_selected.dart';
 import 'package:islam/nav_bar_unselected.dart';
-import 'package:islam/tabs/hadethtabs.dart';
-import 'package:islam/quran/qurantabs.dart';
+import 'package:islam/tabs/hadeth/hadethtabs.dart';
+import 'package:islam/tabs/quran/qurantabs.dart';
 import 'package:islam/radio/radiotabs.dart';
 import 'package:islam/tabs/sebhatabs.dart';
 import 'package:islam/tabs/timetabs.dart';
