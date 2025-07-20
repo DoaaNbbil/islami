@@ -1,5 +1,5 @@
-import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:islam/uitls/color.dart';
 
 class SebhaTabs extends StatefulWidget {
@@ -7,9 +7,10 @@ class SebhaTabs extends StatefulWidget {
   _SebhaTabsState createState() => _SebhaTabsState();
 }
 
-class _SebhaTabsState extends State<SebhaTabs> {
+class _SebhaTabsState extends State<SebhaTabs>
+    with SingleTickerProviderStateMixin {
   int count = 0;
-  double angle = -pi / 2;
+  double angle = 0;
   List<String> azkar = [
     'سبحان الله',
     'الحمد لله',
@@ -27,73 +28,77 @@ class _SebhaTabsState extends State<SebhaTabs> {
   @override
   Widget build(BuildContext context) {
     TextTheme textTheme = Theme.of(context).textTheme;
+    Size screenSize = MediaQuery.sizeOf(context);
 
     int currentZikrIndex = (count ~/ 30) % azkar.length;
     String currentZikr = azkar[currentZikrIndex];
     String currentTitle = azkarTitles[currentZikrIndex];
 
-    double radius = 100;
-    double offset = 50;
+    return Padding(
+      padding: EdgeInsets.all(16.0),
+      child: Column(
+        children: [
+          Text(
+            currentTitle,
+            textAlign: TextAlign.center,
+            style: textTheme.displaySmall?.copyWith(color: AppColor.whiteColor),
+          ),
+          SizedBox(height: screenSize.height * 0.05),
+          Stack(
+            alignment: Alignment.topCenter,
+            children: [
+              Image.asset('assets/images/sebhaheader.png'),
+              Padding(
+                padding: EdgeInsets.only(top: screenSize.height * 0.08),
+                child: SizedBox(
+                  width: screenSize.width * 0.85,
+                  child: GestureDetector(
+                    onTap: () {
+                      HapticFeedback.lightImpact();
+                      setState(() {
+                        count++;
+                        angle += 45;
+                      });
+                    },
+                    child: Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        Transform.rotate(
+                          angle: angle,
+                          child: Image.asset('assets/images/sebhabody.png'),
+                        ),
 
-    double dx = (radius + offset) * cos(angle);
-    double dy = (radius + offset) * sin(angle);
+                        SizedBox(
+                          width: screenSize.width * 0.4,
 
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [
-        Text(
-          currentTitle,
-          textAlign: TextAlign.center,
-          style: textTheme.displaySmall?.copyWith(color: AppColor.whiteColor),
-        ),
-        Stack(
-          alignment: Alignment.center,
-          children: [
-            GestureDetector(
-              onTap: () {
-                setState(() {
-                  count++;
-                  angle += pi / 15;
-                });
-              },
-              child: Container(
-                width: 2 * radius + 100,
-                height: 2 * radius + 100,
-                margin: EdgeInsets.only(top: 70),
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    fit: BoxFit.contain,
-                    image: AssetImage('assets/images/sebhabody.png'),
+                          child: Column(
+                            children: [
+                              Text(
+                                currentZikr,
+                                style: textTheme.displaySmall?.copyWith(
+                                  color: AppColor.whiteColor,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                              SizedBox(height: 16),
+                              Text(
+                                '$count',
+                                style: textTheme.displaySmall!.copyWith(
+                                  color: AppColor.whiteColor,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-                alignment: Alignment.center,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      currentZikr,
-                      style: textTheme.displaySmall?.copyWith(
-                        color: AppColor.whiteColor,
-                      ),
-                    ),
-                    SizedBox(height: 10),
-                    Text(
-                      '$count',
-                      style: textTheme.displaySmall?.copyWith(
-                        color: AppColor.whiteColor,
-                      ),
-                    ),
-                  ],
-                ),
               ),
-            ),
-            Transform.translate(
-              offset: Offset(dx, dy),
-              child: Image.asset('assets/images/sebhaheader.png'),
-            ),
-          ],
-        ),
-      ],
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
